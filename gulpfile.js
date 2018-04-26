@@ -1,7 +1,8 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 var concat = require('gulp-concat');
-var uglify = require('gulp-uglify'); 
+let rename = require("gulp-rename");
+let uglify = require('gulp-uglify-es').default;
 var sourcemaps = require('gulp-sourcemaps');
 var cssmin = require('gulp-cssmin');
 var del = require('del');
@@ -33,11 +34,11 @@ gulp.task('css', function(){
 gulp.task('scripts', function() {
 	return gulp.src(paths.scripts)
 		.pipe(sourcemaps.init())
-		.pipe(babel({
-			presets: ['env']
-		}))
+		// .pipe(babel({
+		// 	presets: ['env']
+		// }))
 		.pipe(concat('main.min.js'))
-		//.pipe(uglify())
+		.pipe(uglify())
 		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 		.pipe(sourcemaps.write())
     .pipe(gulp.dest('build/js'));

@@ -21,6 +21,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
+    "gulp-uglify-es": "^1.0.1",
     "gulp-util": "^3.0.8",
     "uglify-es": "github:mishoo/UglifyJS2#harmony"
   },

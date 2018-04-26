@@ -8,7 +8,8 @@ export default class ProfileController {
    
 	
 	init(){
-		console.log("profile inited")
+		console.log("profile inited");
+		
         // this.model.getUserList().then((data) => {
         //     this.initListeners()
         //     this.view.buildUsersList(this.getNextPage());
