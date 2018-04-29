@@ -1,11 +1,10 @@
 export default class Utils {
 
     constructor(){
-
 			
+
         this.sortingConfig = {
-          
-            "A": page => {
+           "A": page => {
                 page.sort((a, b) =>{
                     return a.email > b.email ? 1 : -1;
                 }); 
@@ -34,7 +33,14 @@ export default class Utils {
                 })
             }
         }
-    }
+		}
+		
+		static initTemplate(wrapperEl, templateId) {
+			var template = document.querySelector(`#${templateId}`);
+			var clon = template.content.cloneNode(true);
+			wrapperEl.innerHTML = '';
+			wrapperEl.appendChild(clon);
+		}
 
     static showView(views) {
         views.forEach(element => {

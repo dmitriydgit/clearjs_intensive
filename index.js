@@ -9,12 +9,12 @@ server.use(middlewares)
 // Custom route with login check, before JSON Server router
 server.use(jsonServer.bodyParser)
 server.post('/login', (req, res) => {
-    let adminUser = adminUsers[0];
-    if(req.body.login == adminUser.login && req.body.password == adminUser.password){
-        res.jsonp({loginStatus:true})
-    } else {
-        res.jsonp({loginStatus:false})
-    }
+	console.log(req.body);
+	if(req.body.login == "ddd@gmail.com" && req.body.password == "12345678"){
+			res.jsonp({status:true})
+	} else {
+			res.jsonp({status:false});
+	}
 })
 
 server.use(router)

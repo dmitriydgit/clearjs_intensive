@@ -1,7 +1,7 @@
 const gulp = require('gulp');
-const babel = require('gulp-babel');
+var rollup = require('gulp-better-rollup')
+var babel = require('rollup-plugin-babel')
 var concat = require('gulp-concat');
-let rename = require("gulp-rename");
 let uglify = require('gulp-uglify-es').default;
 var sourcemaps = require('gulp-sourcemaps');
 var cssmin = require('gulp-cssmin');
@@ -12,7 +12,16 @@ var gutil = require('gulp-util');
 
 
 var paths = {
-	scripts : ['public/js/**/*.js'],
+	scripts : ['public/js/gallery/*.js',
+	'public/js/login/*.js', 
+	'public/js/mainPage/*.js', 
+	'public/js/profile/*.js', 
+	'public/js/general/*.js',
+	'public/js/app.js', 
+	'public/js/router.js',
+	'public/js/app.js', 
+	'public/js/utils.js'
+],
 	styles : ['public/css/*.css']
 }
 
@@ -34,14 +43,12 @@ gulp.task('css', function(){
 gulp.task('scripts', function() {
 	return gulp.src(paths.scripts)
 		.pipe(sourcemaps.init())
-		// .pipe(babel({
-		// 	presets: ['env']
-		// }))
-		.pipe(concat('main.min.js'))
+		.pipe(rollup({plugins: [babel()]}, 'iife'))
+		.pipe(concat('app.min.js'))
 		.pipe(uglify())
-		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+		//.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 		.pipe(sourcemaps.write())
-    .pipe(gulp.dest('build/js'));
+    .pipe(gulp.dest('public/build/js'));
 });
 
 gulp.task('watch', function() {

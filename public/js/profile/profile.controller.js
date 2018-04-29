@@ -3,18 +3,17 @@ export default class ProfileController {
 			this.model = model;
 			this.view = view;
 			this.utils = utils;
+			this.init();
 			
 	}
    
-	
-	init(){
+		init(){
 		console.log("profile inited");
-		
-        // this.model.getUserList().then((data) => {
-        //     this.initListeners()
-        //     this.view.buildUsersList(this.getNextPage());
-        //     this.isLastPage();
-        // }); 	
+        this.model.getProfileData().then((data) => {
+            //this.initListeners()
+            this.view.init(data);
+            //this.isLastPage();
+        }); 	
 	}
     
 }

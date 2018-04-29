@@ -23,7 +23,7 @@
     <link href="css/toolkit.css" rel="stylesheet">
     
 		<link href="css/application.css" rel="stylesheet">
-		<link rel="shortcut icon" href="">
+		
 		<link rel="shortcut icon" href="img/favicon.ico">
     <style>
       /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -38,7 +38,495 @@
   </head>
 
 
-	<body class="bob">
+	<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h5 class="my-0 mr-md-auto font-weight-normal">JSExpert</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+				<a class="p-2 text-dark" id ="loginBtn" href="#">Вход</a>
+				<a class="p-2 text-dark hide" id ="mainPageBtn" href="#mainPage">Главная</a>
+				<a class="p-2 text-dark hide" id ="profileBtn" href="#profile">Профиль</a>
+        <a class="p-2 text-dark hide" id ="galleryBtn" href="#gallery">Галерея</a>
+        <a class="p-2 text-dark hide" id ="contactsBtn" href="#contacts">Контакты</a>
+      </nav>
+      <a class="btn btn-outline-primary hide" id="exitBtn" href="#">Выйти</a>
+    </div>
+
+    <main role="main">  
+      <div class="container">
+          <div class="text-center" id="wrapper"></div>
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script type="module" src="build/js/app.min.js"></script>
+    
+
+    <template id="login-view" class="text-center">
+			
+				<main class="text-center" role="main">
+	
+						<div class="alert alert-danger hide" role="alert" id = "alert-message">
+								Ошибка! Данные введены не корректно. 
+						</div>
+						<div class="alert alert-danger hide" role="alert" id = "notFilledEmailMsg">
+								Заполните поле Имэйл. 
+						</div>
+						<div class="alert alert-danger hide" role="alert" id = "notFilledPassMsg">
+								Заполните поле пароль. 
+						</div>
+						<div class="alert alert-danger hide" role="alert" id = "wrongEmailMsg">
+								Имейл заполнен не корректно. 
+						</div>
+						<div class="alert alert-danger hide" role="alert" id = "wrongPassMsg">
+								Пароль заполнен не корректно. 
+						</div>
+	
+	
+						<form class="form-signin" id = "myForm">
+	
+								<h1 class="h3 mb-3 font-weight-normal">Пожалуйста войдите</h1>
+								<label for="inputEmail" class="sr-only">Email</label>
+								<input type="text" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" autocomplete="on">
+								<div class="mb-3"></div>
+								<label for="inputPassword" class="sr-only">Пароль</label>
+								<input type="text" id="inputPassword" class="form-control" placeholder="Password" required="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" autocomplete="on">
+								<div class="mb-3"></div>
+								<div class="checkbox " id="checkRememb">
+									<label>  <input type="checkbox" id="inputRemember" value="Remember-me"  >Remember me</label>
+								</div>
+								<button class="btn btn-lg btn-primary btn-block" id = "submitBtn" type="submit">Войти</button>
+								<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+							</form>
+						</main>
+			
+    </template>
+
+    <template id="mainPage-view">
+            
+			<div class="dp">
+				<div class="fj">
+					<div class="pz bpi afo">
+						<div class="qf" style="background-image: url(img/iceland.jpg);"></div>
+						<div class="qa avz">
+							<a href="profile.html">
+								<img class="bpj" src="img/avatar-dhg.png">
+							</a>
+		
+							<h6 class="qb">
+								<a class="boa" href="profile.html">Dave Gamache</a>
+							</h6>
+		
+							<p class="afo">I wish i was a little bit taller, wish i was a baller, wish i had a girl…&nbsp;also.</p>
+		
+							<ul class="bpk">
+								<li class="bpl">
+									<a href="#userModal" class="boa" data-toggle="modal">
+										Friends
+										<h6 class="aej">12M</h6>
+									</a>
+								</li>
+		
+								<li class="bpl">
+									<a href="#userModal" class="boa" data-toggle="modal">
+										Enemies
+										<h6 class="aej">1</h6>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+		
+					<div class="pz vp vy afo">
+						<div class="qa">
+							<h6 class="afh">About <small>· <a href="#">Edit</a></small></h6>
+							<ul class="dc axg">
+								<li><span class="axc h ban aff"></span>Went to <a href="#">Oh, Canada</a>
+								</li><li><span class="axc h bnc aff"></span>Became friends with <a href="#">Obama</a>
+								</li><li><span class="axc h bfa aff"></span>Worked at <a href="#">Github</a>
+								</li><li><span class="axc h bfq aff"></span>Lives in <a href="#">San Francisco, CA</a>
+								</li><li><span class="axc h bgz aff"></span>From <a href="#">Seattle, WA</a>
+							</li></ul>
+						</div>
+					</div>
+		
+					 <div class="pz vp vy afo">
+						<div class="qa">
+							<h6 class="afh">Photos <small>· <a href="#">Edit</a></small></h6>
+							<div data-grid="images" data-target-height="150"><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+									<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_5.jpg" style="width: 114px; height: 115px;">
+								</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
+									<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_6.jpg" style="width: 114px; height: 115px;">
+								</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+									<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_7.jpg" style="width: 114px; height: 115px;">
+								</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
+									<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_8.jpg" style="width: 114px; height: 115px;">
+								</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+									<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_9.jpg" style="width: 114px; height: 115px;">
+								</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
+									<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_10.jpg" style="width: 114px; height: 115px;">
+								</div></div>
+						</div>
+					</div>
+				</div>
+		
+				<div class="fm">
+		
+					<ul class="ca bow box afo">
+		
+						<li class="rv b agz">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Message">
+								<div class="bpt">
+									<button type="button" class="cg ns yf">
+										<span class="h bao"></span>
+									</button>
+								</div>
+							</div>
+						</li>
+						
+
+						<div id="result-main">
+							<li class="rv b agz">
+								<img class="bos vb yb aff" src="img/avatar-dhg.png">
+								<div class="rw">
+									<div class="bpb">
+										<small class="acx axc">4 min</small>
+										<h6>Dave Gamache</h6>
+									</div>
+			
+									<p>
+										Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+									</p>
+			
+									<div class="boy" data-grid="images"><div style="display: inline-block; margin-bottom: 10px; margin-right: 10px; vertical-align: bottom;">
+											<img data-action="zoom" data-width="1050" data-height="700" src="img/unsplash_1.jpg" style="width: 273px; height: 182px;">
+										</div><div style="display: inline-block; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom;">
+											<img data-action="zoom" data-width="640" data-height="640" src="img/instagram_1.jpg" style="width: 182px; height: 182px;">
+										</div><div style="display: inline-block; margin-bottom: 10px; margin-right: 10px; vertical-align: bottom;">
+											<img data-action="zoom" data-width="640" data-height="640" src="img/instagram_13.jpg" style="width: 181px; height: 182px;">
+										</div><div style="display: inline-block; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom;">
+											<img data-action="zoom" data-width="1048" data-height="700" src="img/unsplash_2.jpg" style="width: 274px; height: 182px;">
+										</div></div>
+			
+									<ul class="bow afa">
+										<li class="rv afh">
+											<img class="bos vb yb aff" src="img/avatar-fat.jpg">
+											<div class="rw">
+												<strong>Jacon Thornton: </strong>
+												Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
+											</div>
+										</li>
+										<li class="rv">
+											<img class="bos vb yb aff" src="img/avatar-mdo.png">
+											<div class="rw">
+												<strong>Mark Otto: </strong>
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+			
+							<li class="rv b agz">
+								<img class="bos vb yb aff" src="img/avatar-fat.jpg">
+								<div class="rw">
+									<div class="bpd">
+										<div class="bpb">
+											<small class="acx axc">12 min</small>
+											<h6>Jacob Thornton</h6>
+										</div>
+										<p>
+											Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										</p>
+									</div>
+								</div>
+							</li>
+			
+							<li class="rv b agz">
+								<img class="bos vb yb aff" src="img/avatar-mdo.png">
+								<div class="rw">
+									<div class="bpb">
+										<small class="acx axc">34 min</small>
+										<h6>Mark Otto</h6>
+									</div>
+			
+									<p>
+										Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+									</p>
+			
+									<div class="boy" data-grid="images"><img style="display: inline-block; width: 466px; height: 451px; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom;" data-width="640" data-height="640" data-action="zoom" src="img/instagram_3.jpg"></div>
+			
+									<ul class="bow">
+										<li class="rv">
+											<img class="bos vb yb aff" src="img/avatar-dhg.png">
+											<div class="rw">
+												<strong>Dave Gamache: </strong>
+												Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</div>
+					</ul>
+				</div>
+				<!-- <div class="fj">
+					<div class="alert ro alert-dismissible d-none vy" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<a class="rj" href="https://bootstrap-themes.github.io/application/profile/index.html">Visit your profile!</a> Check your self, you aren't looking well.
+					</div>
+		
+					<div class="pz afo d-none vy">
+						<div class="qa">
+							<h6 class="afh">Sponsored</h6>
+							<div data-grid="images" data-target-height="150"><img class="bos" data-width="640" data-height="640" data-action="zoom" src="img/instagram_2.jpg" style="width: 239px; height: 225px; margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;"></div>
+							<p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
+							<button class="cg nz ok">Buy a ticket</button>
+						</div>
+					</div>
+		
+					<div class="pz afo d-none vy">
+						<div class="qa">
+						<h6 class="afh">Likes <small>· <a href="#">View All</a></small></h6>
+						<ul class="bow box">
+							<li class="rv afa">
+								<img class="bos vb yb aff" src="img/avatar-fat.jpg">
+								<div class="rw">
+									<strong>Jacob Thornton</strong> @fat
+									<div class="bpa">
+										<button class="cg nz ok">
+											<span class="h ayi"></span> Follow</button>
+									</div>
+								</div>
+							</li>
+							 <li class="rv">
+								<a class="bpu" href="#">
+									<img class="bos vb yb aff" src="img/avatar-mdo.png">
+								</a>
+								<div class="rw">
+									<strong>Mark Otto</strong> @mdo
+									<div class="bpa">
+										<button class="cg nz ok">
+											<span class="h ayi"></span> Follow</button>
+									</div>
+								</div>
+							</li>
+						</ul>
+						</div>
+						<div class="qg">
+							Dave really likes these nerds, no one knows why though.
+						</div>
+					</div>
+		
+					<div class="pz bpm">
+						<div class="qa">
+							<a href="#">About</a>
+							<a href="#">Help</a>
+							<a href="#">Terms</a>
+							<a href="#">Privacy</a>
+							<a href="#">Cookies</a>
+							<a href="#">Ads </a>
+							<a href="#">Info</a>
+							<a href="#">Brand</a>
+							<a href="#">Blog</a>
+							<a href="#">Status</a>
+							<a href="#">Apps</a>
+							<a href="#">Jobs</a>
+							<a href="#">Advertise</a>
+						</div>
+					</div>
+				</div> -->
+			<!-- </div> -->
+
+    </template>
+
+		<template id="profile-view">
+				<div class="boq" style="background-image: url(img/iceland.jpg);">
+					<div class="by">
+						<div class="bor">
+							<img class="us bos" src="img/avatar-dhg.png">
+							<h3 class="bou">Dave Gamache</h3>
+							<p class="bot">
+								I wish i was a little bit taller, wish i was a baller, wish i had a girl…&nbsp;also.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="conteiner user-form text-center">
+					<div class="col-md-6 mx-auto">
+							<h4 class="mb-3">Billing address</h4>
+							<form class="needs-validation" novalidate="">
+								<div class="row">
+									<div class="col-md-6 mb-3">
+										<label for="firstName">First name</label>
+										<input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+										<div class="invalid-feedback">
+											Valid first name is required.
+										</div>
+									</div>
+									<div class="col-md-6 mb-3">
+										<label for="lastName">Last name</label>
+										<input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+										<div class="invalid-feedback">
+											Valid last name is required.
+										</div>
+									</div>
+								</div>
+		
+								<div class="mb-3">
+									<label for="username">Username</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text">@</span>
+										</div>
+										<input type="text" class="form-control" id="username" placeholder="Username" required="">
+										<div class="invalid-feedback" style="width: 100%;">
+											Your username is required.
+										</div>
+									</div>
+								</div>
+		
+								<div class="mb-3">
+									<label for="email">Email <span class="text-muted">(Optional)</span></label>
+									<input type="email" class="form-control" id="emailProfile" placeholder="you@example.com">
+									<div class="invalid-feedback">
+										Please enter a valid email address for shipping updates.
+									</div>
+								</div>
+		
+								<div class="mb-3">
+									<label for="address">Address</label>
+									<input type="text" class="form-control" id="addressProfile" placeholder="1234 Main St" required="">
+									<div class="invalid-feedback">
+										Please enter your shipping address.
+									</div>
+								</div>
+		
+								<div class="mb-3">
+									<label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+									<input type="text" class="form-control" id="address2Profile" placeholder="Apartment or suite">
+								</div>
+		
+								<div class="row">
+									<div class="col-md-5 mb-3">
+										<label for="country">Country</label>
+										<select class="custom-select d-block w-100" id="countryProfile" required="">
+											<option value="">Choose...</option>
+											<option>United States</option>
+										</select>
+										<div class="invalid-feedback">
+											Please select a valid country.
+										</div>
+									</div>
+									<div class="col-md-4 mb-3">
+										<label for="state">State</label>
+										<select class="custom-select d-block w-100" id="stateProfile" required="">
+											<option value="">Choose...</option>
+											<option>California</option>
+										</select>
+										<div class="invalid-feedback">
+											Please provide a valid state.
+										</div>
+									</div>
+									<div class="col-md-3 mb-3">
+										<label for="zip">Zip</label>
+										<input type="text" class="form-control" id="zip" placeholder="" required="">
+										<div class="invalid-feedback">
+											Zip code required.
+										</div>
+									</div>
+								</div>
+								<hr class="mb-4">
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" id="same-address">
+									<label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+									<input type="checkbox" class="custom-control-input" id="save-info">
+									<label class="custom-control-label" for="save-info">Save this information for next time</label>
+								</div>
+								
+		
+								<hr class="mb-4">
+								<button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+							</form>
+						</div>
+					</div>
+
+
+
+		</template>
+
+		<template id="gallery-view">
+				<hr class="mb-4">
+						<h4 class="mb-3">Gallery</h4>
+						<hr class="mb-4">
+
+						<div class="album py-5 bg-light">
+							<div class="container">
+								<div class="row" id="result">
+								</div>
+							</div>
+						</div>
+
+						<hr class="mb-4">
+						<!-- <div class="by afl" data-grid="images"><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="400" data-action="zoom" src="img/instagram_5.jpg" style="width: 405px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_6.jpg" style="width: 253px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_7.jpg" style="width: 253px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_8.jpg" style="width: 255px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_9.jpg" style="width: 253px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_10.jpg" style="width: 253px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="400" data-action="zoom" src="img/instagram_11.jpg" style="width: 405px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_12.jpg" style="width: 255px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="400" data-action="zoom" src="img/instagram_13.jpg" style="width: 405px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_14.jpg" style="width: 253px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_15.jpg" style="width: 253px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_16.jpg" style="width: 255px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_17.jpg" style="width: 253px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_18.jpg" style="width: 253px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="400" data-action="zoom" src="img/instagram_1.jpg" style="width: 405px; height: 254px;">
+					</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
+						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_2.jpg" style="width: 255px; height: 254px;">
+					</div>
+				</div> -->
+
+
+		</template>
+
+    <template id="contact-view">
+        <div class="col-md-12 order-md-1">
+                <div class="col-md-12">
+                    <section class="jumbotron text-center">
+                            <div class="container">
+                                <h1 class="jumbotron-heading">Контакты</h1>
+                                <p class="lead text-muted">На этой странице вы можете узнать как с нами связаться. </p>
+                            </div>
+                    </section>   
+                </div> 
+            </div>      
+    </template>
+  </body>
+
+	<!-- <body >
 		
 
 
@@ -548,6 +1036,6 @@
 		<script type="module" src="js/login/login.controller.js"></script>
 		
 		<script type="module" src="js/app.js"></script>
-  </body>
+  </body> -->
 </html>
 
