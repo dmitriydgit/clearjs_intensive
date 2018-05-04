@@ -44,8 +44,8 @@ let routeConfig = {
 		},
 		"mainPage": () => {
 			utils.initTemplate(wrapper, "mainPage-view");
-			let model = new MainModel;
-			let view = new MainView;
+			let model = new MainModel();
+			let view = new MainView(utils);
 			new MainController(model, view, utils)
 		},
 		"profile" : () => {

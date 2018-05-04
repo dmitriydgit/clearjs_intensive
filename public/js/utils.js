@@ -77,6 +77,23 @@ export default class Utils {
             element.parentElement.classList.remove("active");
         });
 		}
- 
+		static showHide(object){    
+			for(var key in object) { 
+					var key = key;
+					var value = object[key]; 
+					value.forEach(DOMElem => {
+									DOMElem.classList.remove("show" , "hide");
+									DOMElem.classList.add(key);
+					})
+			}
+		};
+
+ 		static showEl(el){    
+			el.classList.remove("hide");
+		};
+		static hideEl(el){    
+			el.classList.add("hide");
+		};
+
 
 }

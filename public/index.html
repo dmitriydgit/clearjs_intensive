@@ -51,7 +51,7 @@
       <a class="btn btn-outline-primary hide" id="exitBtn" href="#">Выйти</a>
     </div>
 
-    <main role="main">  
+    <main role="main" id="empty-space">  
       <div class="container">
           <div class="text-center" id="wrapper"></div>
       </div>
@@ -143,11 +143,11 @@
 						<div class="qa">
 							<h6 class="afh">About <small>· <a href="#">Edit</a></small></h6>
 							<ul class="dc axg">
-								<li><span class="axc h ban aff"></span>Went to <a href="#">Oh, Canada</a>
-								</li><li><span class="axc h bnc aff"></span>Became friends with <a href="#">Obama</a>
-								</li><li><span class="axc h bfa aff"></span>Worked at <a href="#">Github</a>
-								</li><li><span class="axc h bfq aff"></span>Lives in <a href="#">San Francisco, CA</a>
-								</li><li><span class="axc h bgz aff"></span>From <a href="#">Seattle, WA</a>
+								<li><span class="axc h ban aff"></span>Went to <a href="#" id="wentTo">Oh, Canada</a>
+								</li><li><span class="axc h bnc aff"></span>Became friends with <a href="#" id="friendsWith">Obama</a>
+								</li><li><span class="axc h bfa aff"></span>Worked at <a href="#" id="workedAt">Github</a>
+								</li><li><span class="axc h bfq aff"></span>Lives in <a href="#" id="livesIn">San Francisco, CA</a>
+								</li><li><span class="axc h bgz aff"></span>From <a href="#" id="from">Seattle, WA</a>
 							</li></ul>
 						</div>
 					</div>
@@ -178,7 +178,7 @@
 		
 						<li class="rv b agz">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Message">
+								<input type="text" id="addNewPostInput" class="form-control" placeholder="Message">
 								<div class="bpt">
 									<button type="button" class="cg ns yf">
 										<span class="h bao"></span>
@@ -186,163 +186,39 @@
 								</div>
 							</div>
 						</li>
-						
+						<div class=" text-left form-add-new mt-3 mb-3 hide" id = "form-add-new">
+							<form>
+									<div class="form-group">
+										<label for="personlist">Author</label>
+										<select class="form-control" name="personlist" form="personform" id="new-post-author">
+											<option value="Johny">Johny</option>
+											<option value="Garry">Garry</option>
+											<option value="Jacob Thornton">Jacob Thornton</option>
+											<option value="Carlos">Carlos</option>
+										</select>
+									</div>
+								<div class="form-group">
+										<label for="text">Text</label>
+										<input class="form-control" type="text" name="text" id="new-text">
+									</div>
+								<div class="form-group">
+									<label for="url">Image Url</label>
+									<textarea class="form-control" name="url" cols="40" rows="5" 		id="new-image"></textarea>
+									<!-- <input class="form-control" type="text" name="url" id="new-image"> -->
+								</div>
+							</form>
+							<div  id ="addPostnBtn" class = "btn btn-outline-primary" type ="submit">Добавить</div>
+							
+						</div>
 
 						<div id="result-main">
-							<!-- <li class="rv b agz">
-								<img class="bos vb yb aff" src="img/avatar-dhg.png">
-								<div class="rw">
-									<div class="bpb">
-										<small class="acx axc">4 min</small>
-										<h6>Dave Gamache</h6>
-									</div>
-			
-									<p>
-										Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-									</p>
-			
-									<div class="boy" data-grid="images"><div style="display: inline-block; margin-bottom: 10px; margin-right: 10px; vertical-align: bottom;">
-											<img data-action="zoom" data-width="1050" data-height="700" src="img/unsplash_1.jpg" style="width: 273px; height: 182px;">
-										</div><div style="display: inline-block; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom;">
-											<img data-action="zoom" data-width="640" data-height="640" src="img/instagram_1.jpg" style="width: 182px; height: 182px;">
-										</div><div style="display: inline-block; margin-bottom: 10px; margin-right: 10px; vertical-align: bottom;">
-											<img data-action="zoom" data-width="640" data-height="640" src="img/instagram_13.jpg" style="width: 181px; height: 182px;">
-										</div><div style="display: inline-block; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom;">
-											<img data-action="zoom" data-width="1048" data-height="700" src="img/unsplash_2.jpg" style="width: 274px; height: 182px;">
-										</div></div>
-			
-									<ul class="bow afa">
-										<li class="rv afh">
-											<img class="bos vb yb aff" src="img/avatar-fat.jpg">
-											<div class="rw">
-												<strong>Jacon Thornton: </strong>
-												Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-											</div>
-										</li>
-										<li class="rv">
-											<img class="bos vb yb aff" src="img/avatar-mdo.png">
-											<div class="rw">
-												<strong>Mark Otto: </strong>
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-											</div>
-										</li>
-									</ul>
-								</div>
-							</li>
-			
-							<li class="rv b agz">
-								<img class="bos vb yb aff" src="img/avatar-fat.jpg">
-								<div class="rw">
-									<div class="bpd">
-										<div class="bpb">
-											<small class="acx axc">12 min</small>
-											<h6>Jacob Thornton</h6>
-										</div>
-										<p>
-											Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										</p>
-									</div>
-								</div>
-							</li>
-			
-							<li class="rv b agz">
-								<img class="bos vb yb aff" src="img/avatar-mdo.png">
-								<div class="rw">
-									<div class="bpb">
-										<small class="acx axc">34 min</small>
-										<h6>Mark Otto</h6>
-									</div>
-			
-									<p>
-										Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-									</p>
-			
-									<div class="boy" data-grid="images"><img style="display: inline-block; width: 466px; height: 451px; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom;" data-width="640" data-height="640" data-action="zoom" src="img/instagram_3.jpg"></div>
-			
-									<ul class="bow">
-										<li class="rv">
-											<img class="bos vb yb aff" src="img/avatar-dhg.png">
-											<div class="rw">
-												<strong>Dave Gamache: </strong>
-												Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
-											</div>
-										</li>
-									</ul>
-								</div>
-							</li> -->
+							
 						</div>
 
 
 					</ul>
 				</div>
-				<!-- <div class="fj">
-					<div class="alert ro alert-dismissible d-none vy" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-						<a class="rj" href="https://bootstrap-themes.github.io/application/profile/index.html">Visit your profile!</a> Check your self, you aren't looking well.
-					</div>
-		
-					<div class="pz afo d-none vy">
-						<div class="qa">
-							<h6 class="afh">Sponsored</h6>
-							<div data-grid="images" data-target-height="150"><img class="bos" data-width="640" data-height="640" data-action="zoom" src="img/instagram_2.jpg" style="width: 239px; height: 225px; margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;"></div>
-							<p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
-							<button class="cg nz ok">Buy a ticket</button>
-						</div>
-					</div>
-		
-					<div class="pz afo d-none vy">
-						<div class="qa">
-						<h6 class="afh">Likes <small>· <a href="#">View All</a></small></h6>
-						<ul class="bow box">
-							<li class="rv afa">
-								<img class="bos vb yb aff" src="img/avatar-fat.jpg">
-								<div class="rw">
-									<strong>Jacob Thornton</strong> @fat
-									<div class="bpa">
-										<button class="cg nz ok">
-											<span class="h ayi"></span> Follow</button>
-									</div>
-								</div>
-							</li>
-							 <li class="rv">
-								<a class="bpu" href="#">
-									<img class="bos vb yb aff" src="img/avatar-mdo.png">
-								</a>
-								<div class="rw">
-									<strong>Mark Otto</strong> @mdo
-									<div class="bpa">
-										<button class="cg nz ok">
-											<span class="h ayi"></span> Follow</button>
-									</div>
-								</div>
-							</li>
-						</ul>
-						</div>
-						<div class="qg">
-							Dave really likes these nerds, no one knows why though.
-						</div>
-					</div>
-		
-					<div class="pz bpm">
-						<div class="qa">
-							<a href="#">About</a>
-							<a href="#">Help</a>
-							<a href="#">Terms</a>
-							<a href="#">Privacy</a>
-							<a href="#">Cookies</a>
-							<a href="#">Ads </a>
-							<a href="#">Info</a>
-							<a href="#">Brand</a>
-							<a href="#">Blog</a>
-							<a href="#">Status</a>
-							<a href="#">Apps</a>
-							<a href="#">Jobs</a>
-							<a href="#">Advertise</a>
-						</div>
-					</div>
-				</div> -->
-			<!-- </div> -->
-
+				
     </template>
 
 		<template id="profile-view">
@@ -416,20 +292,16 @@
 								<div class="row">
 									<div class="col-md-5 mb-3">
 										<label for="country">Country</label>
-										<select class="custom-select d-block w-100" id="countryProfile" required="">
-											<option value="">Choose...</option>
-											<option>United States</option>
-										</select>
+										<input  type="text" name="country" class="form-control " id="countryProfile" required="">
+										</input>
 										<div class="invalid-feedback">
 											Please select a valid country.
 										</div>
 									</div>
 									<div class="col-md-4 mb-3">
 										<label for="state">State</label>
-										<select class="custom-select d-block w-100" id="stateProfile" required="">
-											<option value="">Choose...</option>
-											<option>California</option>
-										</select>
+										<input type="text" name="state" class="form-control " 		id="stateProfile" required="">
+										</input>
 										<div class="invalid-feedback">
 											Please provide a valid state.
 										</div>
@@ -443,18 +315,10 @@
 									</div>
 								</div>
 								<hr class="mb-4">
-								<div class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="same-address">
-									<label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-								</div>
-								<div class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="save-info">
-									<label class="custom-control-label" for="save-info">Save this information for next time</label>
-								</div>
-								
+									
 		
 								<hr class="mb-4">
-								<button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+								<!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> -->
 							</form>
 						</div>
 					</div>
