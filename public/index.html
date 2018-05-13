@@ -60,7 +60,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMJcwM9aKMbMfj8-FT5Q46jes2h_T0OYQ"></script>		
     <script type="module" src="build/js/app.min.js"></script>
     
 
@@ -327,66 +328,97 @@
 
 		</template>
 
+
+
+
 		<template id="gallery-view">
 				<hr class="mb-4">
-						<h4 class="mb-3">Gallery</h4>
-						<hr class="mb-4">
-
-						<div class="album py-5 bg-light">
-							<div class="container">
-								<div class="row" id="result">
-								</div>
-							</div>
+				<h4 class="mb-3">Gallery</h4>
+						
+				<hr class="mb-4">	
+				<div  id = "add-new-img" class = "btn btn-success "  >Добавить изображение</div>
+				</div>
+				<div class=" text-left form-add-new hide " id = "form-add-new">
+					<form>
+						<div class="form-group">
+							<label for="name">Name</label>
+							<input class="form-control" type="text" name="name" id="new-name">
 						</div>
+						<div class="form-group">
+							<label for="url">Url</label>
+							<input class="form-control" type="text" name="url" id="new-url">
+						</div>
+						<div class="form-group">
+							<label  for="description">Description</label>
+							<input class="form-control" type="text" name="description" id="new-descr">
+						</div>
+					</form>
+					<div  id = "add-img" class = "btn btn-primary" type ="submit">Добавить</div>
+					<div  id = "edit-img" class = "btn btn-primary" type ="submit">Редактировать</div>
+				</div>
 
-						<hr class="mb-4">
-						<!-- <div class="by afl" data-grid="images"><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="400" data-action="zoom" src="img/instagram_5.jpg" style="width: 405px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_6.jpg" style="width: 253px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_7.jpg" style="width: 253px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_8.jpg" style="width: 255px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_9.jpg" style="width: 253px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_10.jpg" style="width: 253px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="400" data-action="zoom" src="img/instagram_11.jpg" style="width: 405px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_12.jpg" style="width: 255px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="400" data-action="zoom" src="img/instagram_13.jpg" style="width: 405px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_14.jpg" style="width: 253px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_15.jpg" style="width: 253px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_16.jpg" style="width: 255px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_17.jpg" style="width: 253px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_18.jpg" style="width: 253px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 10px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="400" data-action="zoom" src="img/instagram_1.jpg" style="width: 405px; height: 254px;">
-					</div><div style="margin-bottom: 10px; margin-right: 0px; display: inline-block; vertical-align: bottom;">
-						<img data-width="640" data-height="640" data-action="zoom" src="img/instagram_2.jpg" style="width: 255px; height: 254px;">
+
+				<div class="album py-5 bg-light">
+					<div class="container">
+						<div class="row" id="result">
+						</div>
 					</div>
-				</div> -->
+				</div>
 
-
+				<hr class="mb-4">
+						
 		</template>
 
     <template id="contact-view">
         <div class="col-md-12 order-md-1">
                 <div class="col-md-12">
-                    <section class="jumbotron text-center">
-                            <div class="container">
-                                <h1 class="jumbotron-heading">Контакты</h1>
-                                <p class="lead text-muted">На этой странице вы можете узнать как с нами связаться. </p>
-                            </div>
-                    </section>   
+									<section id="contact">
+										<div class="container">
+											<div class="well well-sm">
+												
+											</div>
+										<!-- AIzaSyAmtMgzZfsvpB-pXbpE85YilEW0p0Dx9lE -->
+										<div class="row">
+											<div class="col-md-7">
+												<h4><strong>Contact Us</strong></h4>
+												<div id="googleMap" class="googleMap" style="width:100%;height:400px"></div>
+											</div>
+									
+											<div class="col-md-5">
+													<h4><strong>Get in Touch</strong></h4>
+												<form>
+													<div class="form-group">
+														<input id="contactsName" type="text" class="form-control" name="" value="" placeholder="Name">
+													</div>
+													<div class="form-group">
+														<input id="contactsEmail" type="email" class="form-control" name="" value="" placeholder="E-mail">
+													</div>
+													<div class="form-group">
+														<input id="contactsTel" type="tel" class="form-control" name="" value="" placeholder="Phone">
+													</div>
+													<div class="form-group">
+														<textarea id="contactsMessage" class="form-control" name="" rows="3" placeholder="Message"></textarea>
+													</div>
+													<div id="sendInfoBTN" class="btn btn-primary" type="submit" name="button">
+														Submit
+													</div>
+												</form>
+											</div>
+											</div>
+
+											<hr class="mb-4">
+											<h4 class="mb-3">Wall</h4>
+											<hr class="mb-4">
+
+											<div class="container">
+													<div class="row" id="wall">
+													</div>
+											</div>
+											<hr class="mb-4">
+											<hr class="mb-4">
+											<hr class="mb-4">
+										</div>
+									</section>
                 </div> 
             </div>      
     </template>

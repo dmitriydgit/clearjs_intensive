@@ -18,6 +18,9 @@ import GalleryController from './gallery/gallery.controller.js';
 import GalleryModel from './gallery/gallery.model.js';
 import GalleryView from './gallery/gallery.view.js';
 
+import ContactsController from './contacts/contacts.controller.js';
+import ContactsModel from './contacts/contacts.model.js';
+import ContactsView from './contacts/contacts.view.js';
 
 
 
@@ -53,18 +56,20 @@ let routeConfig = {
 			let model = new ProfileModel;
 			let view = new ProfileView;
 			new ProfileController(model, view, new utils)
-},
+		},
     "gallery" : () => {
         utils.initTemplate(wrapper, "gallery-view");
         let observer = new Observer;
         let model = new GalleryModel;
-        let view = new GalleryView;
+        let view = new GalleryView(utils);
         new GalleryController(model, view, observer, new utils)
     },
     "contacts" : () => {
         utils.initTemplate(wrapper, "contact-view");
         console.log("Contacts route is loaded")
-        //implement Controller, View and Model for this Route
+				let model = new ContactsModel;
+				let view = new ContactsView;
+				new ContactsController(model, view, new utils)
     }
 }
 

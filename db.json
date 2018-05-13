@@ -123,6 +123,16 @@
         "https://images.wallpaperscraft.com/image/margot_robbie_actress_photoshoot_violet_grey_style_103845_320x240.jpg"
       ],
       "id": 11
+    },
+    {
+      "name": "Johny",
+      "date": "2018-05-10T17:59:17.171Z",
+      "url": "img/avatar-dhg.png",
+      "text": "dskjfsdkj",
+      "images": [
+        "https://images.wallpaperscraft.com/image/hong_kong_night_movenpick_62185_320x240.jpg"
+      ],
+      "id": 12
     }
   ],
   "avatars": {
@@ -143,8 +153,8 @@
       "country": "Canada",
       "state": "Toronto",
       "zip": "223322",
-			"friends": "Obama",
-			"wentTo" : "Los Angeles"
+      "friends": "Obama",
+      "wentTo": "Los Angeles"
     }
   ],
   "gallery": [
@@ -194,9 +204,57 @@
       "url": "https://images.wallpaperscraft.com/image/suzdal_vladimir_region_river_stove_kremlin_tower_city_estate_boats_wooden_house_59257_320x240.jpg"
     },
     {
-      "id": 10,
-      "name": "New-York",
-      "url": "https://images.wallpaperscraft.com/image/new_york_night_lights_river_reflection_59222_320x240.jpg"
+      "id": 11
+    },
+    {
+      "url": "https://images.wallpaperscraft.com/image/kyiv_maidan_ukraine_acts_of_war_disorder_93154_320x240.jpg",
+      "name": "Kiev",
+      "description": "",
+      "id": 12
+    },
+    {
+      "url": "https://images.wallpaperscraft.com/image/boat_bridge_sea_venice_63220_320x240.jpg",
+      "name": "Dfaf",
+      "description": "",
+      "id": 13
+    },
+    {
+      "url": "https://images.wallpaperscraft.com/image/boat_bridge_river_china_wood_vegetation_oars_60188_320x240.jpg",
+      "name": "Vietnam",
+      "description": "",
+      "id": 14
+    },
+    {
+      "url": "https://images.wallpaperscraft.com/image/germany_bochum_castle_reichsburg_107216_320x240.jpg",
+      "name": "Reichsburg",
+      "description": "",
+      "id": 15
+    }
+  ],
+  "wall": [
+    {
+      "name": "Charly",
+      "email": "Charly@gmail.com",
+      "phone": "223332",
+			"msg": "Want to be like a sun!!",
+			"date": "2018-05-13T18:56:16.967Z",
+      "id": 1
+    },
+    {
+      "name": "Christy",
+      "email": "christy@gmail.com",
+      "phone": "+38-095-815-8888",
+			"msg": "Whont to go Canada, please send invitation!",
+			"date": "2018-05-13T18:57:16.967Z",
+      "id": 2
+    },
+    {
+      "name": "Nik",
+      "email": "nik@gmail.com",
+      "phone": "454688888",
+      "msg": "Hey, how is it going?",
+      "date": "2018-05-13T18:59:16.967Z",
+      "id": 3
     }
   ],
   "usersList": [

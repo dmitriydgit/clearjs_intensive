@@ -17,6 +17,7 @@ var paths = {
 	'public/js/mainPage/*.js', 
 	'public/js/profile/*.js', 
 	'public/js/general/*.js',
+	'public/js/contacts/*.js',
 	'public/js/app.js', 
 	'public/js/router.js',
 	'public/js/app.js', 

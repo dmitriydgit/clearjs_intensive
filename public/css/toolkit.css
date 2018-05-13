@@ -1081,9 +1081,9 @@ pre {
     max-width: 16.66667%; }
   .fj {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-            flex: 0 0 25%;
-		max-width: 25%; 
+        -ms-flex: 0 0 27%;
+            flex: 0 0 27%;
+		/* max-width: 25%;  */
 		
 	}
   .fk {
@@ -1098,9 +1098,10 @@ pre {
     max-width: 41.66667%; }
   .fm {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 50%;
-            flex: 0 0 75%;
-    max-width: 100%; }
+			-ms-flex: 0 0 73%;
+					flex: 0 0 73%;
+		max-width: 100%; 
+	}
   .fn {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 58.33333%;
